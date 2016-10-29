@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="listItemHorizontalPadding" format="dimension"/>
+    <attr name="listItemVerticalPadding" format="dimension"/>
+    <declare-styleable name="AppSpinner">
+        <attr name="title" format="string"/>
+        <attr name="entries" format="reference"/>
+        <attr name="values" format="reference"/>
+    </declare-styleable>
+</resources>

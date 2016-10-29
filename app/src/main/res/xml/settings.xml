@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidElementNotAllowed -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <PreferenceCategory
+        android:title="@string/default_rule">
+        <com.thebluealliance.spectrum.SpectrumPreferenceCompat
+            android:key="status_bar_color"
+            android:title="@string/status_bar_color"
+            android:defaultValue="@android:color/black"/>
+        <ListPreference
+            android:key="launch_mode"
+            android:title="@string/launch_mode"
+            android:summary="%s"
+            android:entries="@array/launch_mode_entries"
+            android:entryValues="@array/launch_mode_values"
+            android:defaultValue="@string/launch_mode_default_value"/>
+        <ListPreference
+            android:key="screen_orientation"
+            android:title="@string/screen_orientation"
+            android:summary="%s"
+            android:entries="@array/screen_orientation_entries"
+            android:entryValues="@array/screen_orientation_values"
+            android:defaultValue="@string/screen_orientation_default_value"/>
+        <SwitchPreferenceCompat
+            android:key="full_screen"
+            android:title="@string/full_screen"/>
+        <Preference
+            android:key="user_agent"
+            android:title="@string/user_agent"
+            tools:summary="Android phone"/>
+        <SwitchPreferenceCompat
+            android:key="enable_js"
+            android:title="@string/enable_javascript"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/data">
+        <Preference
+            android:key="clear_data"
+            android:title="@string/clear_data"/>
+        <Preference
+            android:key="clear_cache"
+            android:title="@string/clear_cache"/>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="pattern" type="com.github.drunlin.webappbox.data.URLPattern"/>
+        <variable name="selected" type="Boolean"/>
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ListPreferredItem.Selectable">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@{pattern.pattern}"
+            tools:text="https?://.+\\.android\\.com/.*"
+            app:selected="@{selected}"
+            style="@style/ListItemTitle" />
+    </FrameLayout>
+</layout>

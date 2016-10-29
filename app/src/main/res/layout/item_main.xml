@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="shortcut" type="com.github.drunlin.webappbox.data.Shortcut"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="?listItemVerticalPadding"
+        android:paddingBottom="?listItemVerticalPadding"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:ignore="UseCompoundDrawables">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@{shortcut.icon}"
+            android:foreground="@drawable/fg_app_icon"
+            tools:src="@android:mipmap/sym_def_app_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:text="@{shortcut.name}"
+            tools:text="Web App"
+            style="@style/ListItemTitle"/>
+    </LinearLayout>
+</layout>

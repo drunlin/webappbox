@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.github.drunlin.webappbox">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <!--suppress DeprecatedClassUsageInspection -->
+    <uses-permission android:name="android.permission.GET_TASKS" android:maxSdkVersion="20"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS" android:maxSdkVersion="20"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
+        android:name=".AppApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backups"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.WebappEditorActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".activity.SettingsActivity" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:label="@string/about"/>
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity"
+            android:documentLaunchMode="always"
+            android:taskAffinity=""
+            tools:ignore="UnusedAttribute" />
+        <activity
+            android:name=".activity.WebappActivity0"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity1"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity2"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity3"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity4"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity5"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity6"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity7"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity8"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+        <activity
+            android:name=".activity.WebappActivity9"
+            android:label="@string/webapp"
+            android:icon="@mipmap/ic_webapp"
+            android:taskAffinity=""/>
+    </application>
+
+</manifest>

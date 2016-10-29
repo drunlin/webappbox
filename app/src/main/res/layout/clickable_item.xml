@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="title" type="String"/>
+        <variable name="summary" type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/ListPreferredItem">
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{title}"
+            tools:text="Title"
+            style="@style/ListItemTitle"/>
+        <TextView
+            android:id="@+id/summaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{summary}"
+            tools:text="Summary"
+            android:visibility="@{summary != null ? View.VISIBLE : View.GONE}"
+            style="@style/ListItemSummary"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.WebappEditorActivity">
+    <data>
+        <import type="com.github.drunlin.webappbox.R"/>
+        <variable name="webapp" type="com.github.drunlin.webappbox.data.Webapp"/>
+    </data>
+    <com.github.drunlin.webappbox.widget.ScrollLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/text_input"
+            android:id="@+id/urlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="?listItemHorizontalPadding"
+            android:layout_marginRight="?listItemHorizontalPadding"
+            app:hint="@{@string/url}"
+            app:text="@{webapp.url}"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="?listItemHorizontalPadding"
+            android:layout_marginRight="?listItemHorizontalPadding">
+            <ImageView
+                android:id="@+id/iconImage"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                app:src="@{webapp.icon ?? (Integer) R.mipmap.ic_webapp}"
+                tools:src="@mipmap/ic_webapp"
+                android:background="@android:color/darker_gray" />
+            <include layout="@layout/text_input"
+                android:id="@+id/nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/item_text_margin"
+                android:layout_gravity="center_vertical"
+                app:hint="@{@string/label}"
+                app:text="@{webapp.name}"/>
+        </FrameLayout>
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/shortcutItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="?listItemHorizontalPadding"
+            android:layout_marginRight="?listItemHorizontalPadding"
+            android:text="@string/add_shortcut"
+            style="@style/AppCompatCheckBox"/>
+        <com.github.drunlin.webappbox.widget.AppSpinner
+            android:id="@+id/locationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/location"
+            app:entries="@array/policy_entries"
+            app:values="@array/policy_values"/>
+        <include layout="@layout/clickable_item"
+            android:id="@+id/patternsItem"
+            app:title="@{@string/url_patterns}"
+            app:summary="@{@string/pattern_summary}"/>
+        <include layout="@layout/clickable_item"
+            android:id="@+id/rulesItem"
+            app:title="@{@string/rules}"
+            app:summary="@{@string/rule_summary}"/>
+        <include layout="@layout/clickable_text"
+            android:id="@+id/previewItem"
+            app:title="@{@string/preview}"/>
+    </com.github.drunlin.webappbox.widget.ScrollLinearLayout>
+</layout>

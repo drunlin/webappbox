@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ValidFragment" severity="ignore"/>
+    <issue id="RtlHardcoded" severity="ignore"/>
+    <issue id="RtlSymmetry" severity="ignore"/>
+    <issue id="ContentDescription" severity="ignore"/>
+    <issue id="PrivateResource" severity="ignore"/>
+    <issue id="LeakingThis" severity="ignore"/>
+</lint>

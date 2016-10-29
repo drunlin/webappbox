@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="hint" type="String"/>
+        <variable name="text" type="String"/>
+    </data>
+    <com.github.drunlin.webappbox.widget.ViewStateLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-4dp"
+            android:layout_marginRight="-4dp"
+            android:hint="@{hint}"
+            tools:hint="Hint">
+            <com.github.drunlin.webappbox.widget.AppEditText
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions|textUri"
+                android:text="@{text}" />
+        </android.support.design.widget.TextInputLayout>
+    </com.github.drunlin.webappbox.widget.ViewStateLayout>
+</layout>

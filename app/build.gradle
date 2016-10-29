@@ -1,0 +1,106 @@
+import com.android.build.gradle.internal.tasks.databinding.DataBindingExportBuildInfoTask
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+
+buildscript {
+    ext.kotlin_version = "1.0.5-eap-83"
+
+    repositories {
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25"
+
+    defaultConfig {
+        applicationId "com.github.drunlin.webappbox"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(project.property("STORE_FILE"))
+            storePassword project.property("STORE_PASSWORD")
+            keyAlias project.property("KEY_ALIAS")
+            keyPassword project.property("KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+repositories {
+    maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+}
+
+dependencies {
+    compile fileTree(include: ["*.jar"], dir: "libs")
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "com.android.support:appcompat-v7:25.0.0"
+    compile "com.android.support:design:25.0.0"
+    compile "com.android.support:cardview-v7:25.0.0"
+    compile "com.android.support:preference-v7:25.0.0"
+    compile "com.android.support:preference-v14:25.0.0"
+    compile "com.thebluealliance:spectrum:0.6.0"
+    compile "com.github.rahatarmanahmed:circularprogressview:2.5.0"
+    kapt "com.android.databinding:compiler:2.2.2"
+    compile "com.google.dagger:dagger:2.5"
+    kapt "com.google.dagger:dagger-compiler:2.5"
+    compile "io.reactivex:rxjava:1.1.5"
+    compile "io.reactivex:rxandroid:1.2.0"
+    compile "com.jakewharton.rxbinding:rxbinding-design:0.4.0"
+    compile "com.jakewharton.rxbinding:rxbinding:0.4.0"
+    compile "com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0"
+    compile "org.jsoup:jsoup:1.9.2"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.robolectric:robolectric:3.0"
+
+    androidTestCompile "com.android.support:support-annotations:25.0.0"
+    androidTestCompile "com.android.support.test:runner:0.5"
+    androidTestCompile "com.android.support.test:rules:0.5"
+}
+
+/**
+ * Workaround for https://code.google.com/p/android/issues/detail?id=182715
+ */
+tasks.withType(DataBindingExportBuildInfoTask) { task ->
+    if (task.name.endsWith("AndroidTest")) {
+        task.finalizedBy(tasks.create("${task.name}Workaround") << {
+            task.output.deleteDir()
+        })
+    }
+}

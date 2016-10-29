@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="text" type="String"/>
+        <variable name="checked" type="Boolean"/>
+    </data>
+    <com.github.drunlin.webappbox.widget.ViewStateLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{v -> switcher.toggle()}"
+        style="@style/ListPreferredItem">
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/item_text_margin"
+            android:layout_gravity="center_vertical"
+            android:text="@{text}"
+            tools:text="Text"
+            style="@style/ListItemTitle"/>
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:clickable="false"
+            android:checked="@{checked}" />
+    </com.github.drunlin.webappbox.widget.ViewStateLayout>
+</layout>

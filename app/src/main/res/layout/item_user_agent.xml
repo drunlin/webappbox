@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="userAgent" type="com.github.drunlin.webappbox.data.UserAgent"/>
+        <variable name="selected" type="Boolean"/>
+        <variable name="checked" type="Boolean"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:selected="@{selected}"
+        style="@style/ListPreferredItem.Selectable">
+        <RadioButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{checked}"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/item_text_margin"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{userAgent.name}"
+                tools:text="Name"
+                style="@style/ListItemTitle"/>
+            <TextView
+                android:id="@+id/subTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{userAgent.value}"
+                tools:text="Value"
+                style="@style/ListItemSummary.SingleLine"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

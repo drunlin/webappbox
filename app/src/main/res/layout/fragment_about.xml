@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.AboutActivity">
+    <com.github.drunlin.webappbox.widget.ScrollLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/clickable_item"
+            app:title="@{@string/version}"
+            app:summary="@{@string/version_code}"/>
+        <include layout="@layout/clickable_item"
+            android:id="@+id/githubItem"
+            app:title="@{@string/github}"
+            app:summary="@{@string/project_homepage}"/>
+        <include layout="@layout/clickable_item"
+            android:id="@+id/developerItem"
+            app:title="@{@string/developer}"
+            app:summary="@{@string/author_email}"/>
+        <include layout="@layout/clickable_text"
+            android:id="@+id/licensesItem"
+            app:title="@{@string/licenses}"/>
+        <include layout="@layout/clickable_text"
+            android:id="@+id/manualItem"
+            app:title="@{@string/manual}"/>
+        <include layout="@layout/clickable_item"
+            android:id="@+id/donationItem"
+            app:title="@{@string/donate}"
+            app:summary="@{@string/donation_account}"/>
+    </com.github.drunlin.webappbox.widget.ScrollLinearLayout>
+</layout>

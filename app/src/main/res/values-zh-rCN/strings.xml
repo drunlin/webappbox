@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="webapp">网络应用</string>
+    <string name="about">关于</string>
+    <string name="account_copied">帐号复制完成</string>
+    <string name="add">添加</string>
+    <string name="add_pattern">添加模式</string>
+    <string name="add_rule">添加规则</string>
+    <string name="add_shortcut">添加快捷方式</string>
+    <string name="add_user_agent">添加浏览器标识</string>
+    <string name="allow">允许</string>
+    <string name="app_not_found">网络应用不存在</string>
+    <string name="apps">应用</string>
+    <string name="block">禁止</string>
+    <string name="cache_cleared">缓存清理完成</string>
+    <string name="cancel">取消</string>
+    <string name="change_icon">更改图标</string>
+    <string name="clear_data">清除数据</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="confirm">完成</string>
+    <string name="copy">复制</string>
+    <string name="copy_to_clipboard">复制到剪切板</string>
+    <string name="data">数据</string>
+    <string name="data_cleared">数据清除完成</string>
+    <string name="default_rule">默认规则</string>
+    <string name="delete">删除</string>
+    <string name="developer">开发者</string>
+    <string name="donate">捐赠</string>
+    <string name="donation_account">支付宝/PayPal：drunlin@outlook.com</string>
+    <string name="download_failed">下载失败</string>
+    <string name="downloading_image">正在下载图片……</string>
+    <string name="edit">修改</string>
+    <string name="edit_pattern">修改模式</string>
+    <string name="edit_rule">修改规则</string>
+    <string name="edit_user_agent">修改浏览器标识</string>
+    <string name="edit_webapp">修改应用</string>
+    <string name="enable_javascript">启用脚本</string>
+    <string name="exit">退出</string>
+    <string name="exited_name">名称已存在</string>
+    <string name="exited_pattern">模式已存在</string>
+    <string name="exited_rule">规则已存在</string>
+    <string name="exited_ua">浏览器标识已存在</string>
+    <string name="exited_url">网址已存在</string>
+    <string name="full_screen">全屏</string>
+    <string name="gallery_not_found">没有找到图库应用</string>
+    <string name="invalid_regex">错误的正则表达式</string>
+    <string name="invalid_url">错误的网址</string>
+    <string name="label">名称</string>
+    <string name="launch_mode">启动模式</string>
+    <string name="licenses">开源许可</string>
+    <string name="location">位置</string>
+    <string name="location_prompt">当前网站想使用你的设备位置信息。</string>
+    <string name="manual">帮助手册</string>
+    <string name="new_app">新建</string>
+    <string name="new_pattern">新建模式</string>
+    <string name="new_rule">新建规则</string>
+    <string name="new_webapp">新建应用</string>
+    <string name="ok">确定</string>
+    <string name="pattern">模式*</string>
+    <string name="pattern_summary">没有被匹配到的链接在其它应用中打开</string>
+    <string name="pick_image">选择图片</string>
+    <string name="please_wait">请等待</string>
+    <string name="preview">预览</string>
+    <string name="regex">正则表达式</string>
+    <string name="required_name">名称*</string>
+    <string name="required_user_agent">浏览器标识</string>
+    <string name="restart">重启应用</string>
+    <string name="rule_summary">给网页设置特殊的规则</string>
+    <string name="rules">规则</string>
+    <string name="screen_orientation">屏幕方向</string>
+    <string name="search">搜索</string>
+    <string name="set_as_url">设置为网址</string>
+    <string name="settings">设置</string>
+    <string name="status_bar_color">状态栏颜色</string>
+    <string name="turn_on">打开</string>
+    <string name="turn_on_location">在系统设置中打开定位服务</string>
+    <string name="url_patterns">模式</string>
+    <string name="user_agent">浏览器标识</string>
+    <string name="user_agents">浏览器标识</string>
+    <string name="version">版本号</string>
+    <string name="url">网址</string>
+    <string-array name="policy_entries">
+        <item>先询问</item>
+        <item>允许</item>
+        <item>拒绝</item>
+    </string-array>
+    <string-array name="icon_chooser">
+        <item>使用默认图标</item>
+        <item>从网站中加载</item>
+        <item>@string/pick_image</item>
+    </string-array>
+    <string-array name="screen_orientation_entries">
+        <item>自动</item>
+        <item>竖屏</item>
+        <item>横屏</item>
+    </string-array>
+    <string-array name="launch_mode_entries">
+        <item>标准模式</item>
+        <item>新建窗口</item>
+        <item>移除顶部</item>
+        <item>保持顶部</item>
+        <item>全局唯一</item>
+    </string-array>
+    <string name="app_name">网络应用盒子</string>
+</resources>

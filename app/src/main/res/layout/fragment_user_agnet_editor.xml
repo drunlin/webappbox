@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="userAgent" type="com.github.drunlin.webappbox.data.UserAgent"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/AlertDialogCustomView">
+        <include layout="@layout/text_input"
+            android:id="@+id/nameInput"
+            app:hint="@{@string/required_name}"
+            app:text="@{userAgent.name}"/>
+        <include layout="@layout/text_input"
+            android:id="@+id/uaInput"
+            app:hint="@{@string/required_user_agent}"
+            app:text="@{userAgent.value}"/>
+    </LinearLayout>
+</layout>

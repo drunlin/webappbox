@@ -1,0 +1,70 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="preferenceTheme">@style/AppTheme.PreferenceOverlay</item>
+        <item name="spinnerStyle">@style/AppTheme.SpinnerStyle</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="spectrum_colors">@array/spectrumColors</item>
+
+        <item name="listItemHorizontalPadding">@dimen/activity_horizontal_margin</item>
+        <item name="listItemVerticalPadding">16dp</item>
+        <item name="android:listPreferredItemPaddingLeft">?listItemHorizontalPadding</item>
+        <item name="android:listPreferredItemPaddingRight">?listItemHorizontalPadding</item>
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:imeOptions">flagNoExtractUi</item>
+    </style>
+    <style name="AppTheme" parent="Base.AppTheme"/>
+    <style name="AppTheme.NoActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@null</item>
+    </style>
+    <style name="AppTheme.PreferenceOverlay" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceCategoryStyle">@style/PreferenceCategory</item>
+    </style>
+    <style name="PreferenceCategory" parent="@style/Preference.Category.Material">
+        <item name="android:layout">@layout/preference_category</item>
+    </style>
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+    </style>
+    <style name="ListPreferredItem">
+        <item name="android:minHeight">?android:listPreferredItemHeightSmall</item>
+        <item name="android:paddingTop">?listItemVerticalPadding</item>
+        <item name="android:paddingBottom">?listItemVerticalPadding</item>
+        <item name="android:paddingLeft">?listItemHorizontalPadding</item>
+        <item name="android:paddingRight">?listItemHorizontalPadding</item>
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
+    <style name="ListPreferredItem.Selectable">
+        <item name="android:background">@drawable/bg_selectable_item</item>
+    </style>
+    <style name="ListItemTitle">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textAppearance">?textAppearanceListItem</item>
+    </style>
+    <style name="ListItemSummary">
+        <item name="android:maxLines">10</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+    <style name="ListItemSummary.SingleLine">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="AlertDialogCustomView">
+        <item name="android:paddingTop">?dialogPreferredPadding</item>
+        <item name="android:paddingLeft">?dialogPreferredPadding</item>
+        <item name="android:paddingRight">?dialogPreferredPadding</item>
+    </style>
+    <style name="AppCompatCheckBox">
+        <item name="android:minHeight">?android:listPreferredItemHeightSmall</item>
+        <item name="android:paddingTop">?listItemVerticalPadding</item>
+        <item name="android:paddingBottom">?listItemVerticalPadding</item>
+        <item name="android:paddingLeft">32dp</item>
+    </style>
+</resources>

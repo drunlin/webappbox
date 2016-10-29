@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">WebappBox</string>
+    <string name="webapp">Web App</string>
+    <string name="apps">Apps</string>
+    <string name="search">Search</string>
+    <string name="new_app">New app</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="add_shortcut">Add shortcut</string>
+    <string name="pick_image">Pick image</string>
+    <string-array name="icon_chooser">
+        <item>Use default icon</item>
+        <item>Load from website</item>
+        <item>@string/pick_image</item>
+    </string-array>
+    <string-array name="policy_entries">
+        <item>Ask</item>
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+    <string name="new_webapp">Add new webapp</string>
+    <string name="edit_webapp">Edit webapp</string>
+    <string name="confirm">Confirm</string>
+    <string name="required_url" translatable="false">URL*</string>
+    <string name="label">Label</string>
+    <string name="exited_rule">Rule already exists</string>
+    <string name="change_icon">Change icon</string>
+    <string name="please_wait">Please wait</string>
+    <string name="downloading_image">Downloading image…</string>
+    <string name="download_failed">Download failed</string>
+    <string name="url_patterns">URL patterns</string>
+    <string name="rules">Rules</string>
+    <string name="edit_pattern">Edit pattern</string>
+    <string name="add_pattern">Add new pattern</string>
+    <string name="pattern">Pattern*</string>
+    <string name="edit_rule">Edit rule</string>
+    <string name="add_rule">Add new rule</string>
+    <string name="invalid_url">Invalid URL</string>
+    <string name="exited_url">URL already exists</string>
+    <string name="status_bar_color">Status bar color</string>
+    <string name="full_screen">Full screen</string>
+    <string name="screen_orientation">Screen orientation</string>
+    <string name="required_name">Name*</string>
+    <string name="required_user_agent">User agent string*</string>
+    <string-array name="screen_orientation_entries">
+        <item>Auto</item>
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+    <string name="launch_mode">Launch mode</string>
+    <string-array name="launch_mode_entries">
+        <item>Standard</item>
+        <item>New window</item>
+        <item>Clear top</item>
+        <item>Single top</item>
+        <item>Single task</item>
+    </string-array>
+    <string name="enable_javascript">Enable JavaScript</string>
+    <string name="user_agent">User agent</string>
+    <string name="edit_user_agent">Edit user agent</string>
+    <string name="add_user_agent">Add new user agent</string>
+    <string name="user_agents">User agents</string>
+    <string name="url">URL</string>
+    <string name="clear_data">Clear data</string>
+    <string name="data_cleared">Data cleared</string>
+    <string name="clear_cache">Clear cache</string>
+    <string name="cache_cleared">Cache cleared</string>
+    <string name="default_rule">Default rule</string>
+    <string name="restart">Restart</string>
+    <string name="new_rule">New rule</string>
+    <string name="new_pattern">New pattern</string>
+    <string name="set_as_url">Set as URL</string>
+    <string name="exit">Exit</string>
+    <string name="data">Data</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="add">Add</string>
+    <string name="version">Version</string>
+    <string name="version_code" translatable="false">1.0</string>
+    <string name="github" translatable="false">Github</string>
+    <string name="project_homepage" translatable="false">https://github.com/drunlin/webappbox</string>
+    <string name="developer">Developer</string>
+    <string name="author_email" translatable="false">drunlin@outlook.com</string>
+    <string name="licenses">Open source licenses</string>
+    <string name="manual">Manual</string>
+    <string name="donate">Donate</string>
+    <string name="donation_account">PayPal/AliPay: drunlin@outlook.com</string>
+    <string name="account_copied">Account copied</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="copy">Copy</string>
+    <string name="exited_pattern">Pattern already exists</string>
+    <string name="invalid_regex">Invalid Regex</string>
+    <string name="exited_name">Name already exists</string>
+    <string name="exited_ua">UA already exists</string>
+    <string name="regex">Regex</string>
+    <string name="location">Location</string>
+    <string name="location_prompt">This website wants to use your device\'s location.</string>
+    <string name="allow">allow</string>
+    <string name="block">block</string>
+    <string name="turn_on_location">Turn on location in Android Settings.</string>
+    <string name="turn_on">turn on</string>
+    <string name="app_not_found">The web app does not exist</string>
+    <string name="gallery_not_found">No Gallery apps found</string>
+    <string name="pattern_summary">Links that are not matched are opened in other apps</string>
+    <string name="rule_summary">Set special rules for pages</string>
+    <string name="preview">Preview</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.github.drunlin.webappbox">
+
+    <application tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name="android.support.v7.app.AppCompatActivity"/>
+        <activity android:name=".activity.WebappContextActivity"/>
+        <activity android:name=".activity.FragmentActivity"/>
+    </application>
+
+</manifest>

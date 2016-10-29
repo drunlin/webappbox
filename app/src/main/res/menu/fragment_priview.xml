@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_restart"
+        android:title="@string/restart"/>
+    <item
+        android:id="@+id/menu_new_rule"
+        android:title="@string/new_rule"/>
+    <item
+        android:id="@+id/menu_rules"
+        android:title="@string/rules"/>
+    <item
+        android:id="@+id/menu_new_pattern"
+        android:title="@string/new_pattern"/>
+    <item
+        android:id="@+id/menu_patterns"
+        android:title="@string/url_patterns"/>
+    <item
+        android:id="@+id/menu_set_url"
+        android:title="@string/set_as_url"/>
+    <item
+        android:id="@+id/menu_exit"
+        android:title="@string/exit"/>
+</menu>

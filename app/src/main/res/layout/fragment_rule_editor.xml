@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.WebappEditorActivity">
+    <data>
+        <variable name="rule" type="com.github.drunlin.webappbox.data.Rule" />
+    </data>
+    <com.github.drunlin.webappbox.widget.ScrollLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <com.github.drunlin.webappbox.widget.PatternEditor
+            android:id="@+id/editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="?listItemHorizontalPadding"
+            android:paddingRight="?listItemHorizontalPadding"
+            app:pattern="@{rule.pattern}" />
+        <FrameLayout
+            android:id="@+id/colorItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ListPreferredItem">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/item_text_margin"
+                android:layout_gravity="center_vertical"
+                android:text="@string/status_bar_color"
+                style="@style/ListItemTitle"/>
+            <com.github.drunlin.webappbox.widget.ColorView
+                android:id="@+id/colorView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center_vertical"
+                app:color="@{rule != null ? rule.color : @android:color/black}"/>
+        </FrameLayout>
+        <com.github.drunlin.webappbox.widget.AppSpinner
+            android:id="@+id/launchModeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/launch_mode"
+            app:entries="@array/launch_mode_entries"
+            app:values="@array/launch_mode_values" />
+        <com.github.drunlin.webappbox.widget.AppSpinner
+            android:id="@+id/orientationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/screen_orientation"
+            app:entries="@array/screen_orientation_entries"
+            app:values="@array/screen_orientation_values" />
+        <include layout="@layout/clickable_item"
+            android:id="@+id/userAgentItem"
+            app:title="@{@string/user_agent}"/>
+        <include layout="@layout/checkable_item"
+            android:id="@+id/fullScreenItem"
+            app:text="@{@string/full_screen}"
+            app:checked="@{rule.fullScreen}" />
+        <include layout="@layout/checkable_item"
+            android:id="@+id/enableJavascriptItem"
+            app:text="@{@string/enable_javascript}"
+            app:checked="@{rule != null ? rule.jsEnabled : true}" />
+    </com.github.drunlin.webappbox.widget.ScrollLinearLayout>
+</layout>
