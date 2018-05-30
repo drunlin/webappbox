@@ -14,6 +14,6 @@ class ManualFragment : SecondaryFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        text.text = HtmlCompact.fromHtml(context.getRawText(R.raw.manual))
+        text.text = HtmlCompact.fromHtml(context!!.getRawText(R.raw.manual))
     }
 }

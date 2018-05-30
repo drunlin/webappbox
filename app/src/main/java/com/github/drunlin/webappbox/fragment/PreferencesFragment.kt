@@ -32,7 +32,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), UserAgentsFragment.OnCha
         addPreferencesFromResource(R.xml.settings)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)

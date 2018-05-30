@@ -10,7 +10,7 @@ abstract class SecondaryFragment : AppBarFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toolbar.setNavigationIcon(context.getResourceId(R.attr.homeAsUpIndicator))
+        toolbar.setNavigationIcon(context!!.getResourceId(R.attr.homeAsUpIndicator))
         toolbar.setNavigationOnClickListener { activity.onBackPressed() }
     }
 }

@@ -16,7 +16,7 @@ class ColorPickerFragment() : CustomViewDialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AlertDialog.Builder(context)
+        return AlertDialog.Builder(context!!)
                 .setTitle(R.string.status_bar_color)
                 .setNegativeButton(R.string.cancel, null)
                 .create()
@@ -24,7 +24,7 @@ class ColorPickerFragment() : CustomViewDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val palette = view.findViewById(R.id.palette) as SpectrumPalette
-        palette.setSelectedColor(arguments.getInt(ARGUMENT_COLOR))
+        palette.setSelectedColor(arguments!!.getInt(ARGUMENT_COLOR))
         palette.setOnColorSelectedListener {
             dismiss()
             (parentFragment as OnColorSelectedListener?)?.onColorSelected(it)

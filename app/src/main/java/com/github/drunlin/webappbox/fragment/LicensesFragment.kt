@@ -13,6 +13,6 @@ class LicensesFragment : SecondaryFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        text.text = context.getRawText(R.raw.licenses)
+        text.text = context!!.getRawText(R.raw.licenses)
     }
 }

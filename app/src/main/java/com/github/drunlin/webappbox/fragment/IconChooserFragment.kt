@@ -8,7 +8,7 @@ import com.github.drunlin.webappbox.R
 
 class IconChooserFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AlertDialog.Builder(activity)
+        return AlertDialog.Builder(activity!!)
                 .setTitle(R.string.change_icon)
                 .setItems(R.array.icon_chooser) { dialog, which -> onClick(which) }
                 .setNegativeButton(R.string.cancel, null)

@@ -131,18 +131,18 @@ class WebappEditorFragment(id: Long?) : EditorFragment<Webapp>(id),
     }
 
     private fun pickPicture() {
-        val uri = Uri.fromFile(File(context.externalCacheDir, "icon"))
+        val uri = Uri.fromFile(File(context!!.externalCacheDir, "icon"))
         val intent = Intent(Intent.ACTION_PICK, Media.EXTERNAL_CONTENT_URI)
                 .setType("image/*")
                 .putExtra("crop", "true")
-                .putExtra("outputX", context.iconSize)
-                .putExtra("outputY", context.iconSize)
+                .putExtra("outputX", context!!.iconSize)
+                .putExtra("outputY", context!!.iconSize)
                 .putExtra("aspectX", 1)
                 .putExtra("aspectY", 1)
                 .putExtra("scale", true)
                 .putExtra(MediaStore.EXTRA_OUTPUT, uri)
         val chooser = Intent.createChooser(intent, getText(R.string.pick_image))
-        if (chooser.resolveActivity(context.packageManager) != null)
+        if (chooser.resolveActivity(context!!.packageManager) != null)
             startActivityForResult(chooser, REQUEST_PICK_PICTURE)
         else
             Snackbar.make(view!!, R.string.gallery_not_found, Snackbar.LENGTH_SHORT).show()
@@ -154,7 +154,7 @@ class WebappEditorFragment(id: Long?) : EditorFragment<Webapp>(id),
                 iconImage.setImageBitmap(Media.getBitmap(activity.contentResolver, data!!.data))
             } catch (e: SecurityException) {
                 pendingImageUri = data!!.data
-                if (ContextCompat.checkSelfPermission(context,
+                if (ContextCompat.checkSelfPermission(context!!,
                         Manifest.permission.READ_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
                     val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -179,10 +179,8 @@ class WebappEditorFragment(id: Long?) : EditorFragment<Webapp>(id),
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
-        if (outState == null) return
-
-        iconImage?.run { outState.putParcelable(BUNDLE_ICON, bitmap) }
+    override fun onSaveInstanceState(outState: Bundle) {
+        iconImage.run { outState.putParcelable(BUNDLE_ICON, bitmap) }
         pendingImageUri?.run { outState.putParcelable(BUNDLE_IMAGE, this) }
     }
 

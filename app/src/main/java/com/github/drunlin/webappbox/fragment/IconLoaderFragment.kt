@@ -28,14 +28,14 @@ class IconLoaderFragment() : DialogFragment() {
 
         app.component.inject(this)
 
-        asyncCall({ loader.load(arguments.getString(ARGUMENT_URL)) }) {
+        asyncCall({ loader.load(arguments!!.getString(ARGUMENT_URL)) }) {
             dismiss()
             if (!loader.canceled) (parentFragment as OnIconLoadedListener?)?.onIconLoaded(it)
         }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AlertDialog.Builder(context)
+        return AlertDialog.Builder(context!!)
                 .setTitle(R.string.please_wait)
                 .setView(R.layout.dialog_progress)
                 .create()

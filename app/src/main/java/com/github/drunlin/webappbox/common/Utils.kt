@@ -105,9 +105,9 @@ fun FragmentManager.remove(fragment: Fragment) {
     beginTransaction().remove(fragment).commit()
 }
 
-val Fragment.app: AppApplication get() = activity.application as AppApplication
+val Fragment.app: AppApplication get() = activity!!.application as AppApplication
 
-fun Fragment.getSystemService(name: String): Any? = context.getSystemService(name)
+fun Fragment.getSystemService(name: String): Any? = context!!.getSystemService(name)
 
 var Fragment.friendFragment: Fragment
     set(value) {
@@ -116,17 +116,17 @@ var Fragment.friendFragment: Fragment
         var depth = 0
         var fragment: Fragment? = value
         do {
-            fragment!!.fragmentManager.putFragment(arguments, "FRIEND_FRAGMENT${depth++}", fragment)
+            fragment!!.fragmentManager!!.putFragment(arguments, "FRIEND_FRAGMENT${depth++}", fragment)
             fragment = fragment.parentFragment
         } while (fragment != null)
 
-        arguments.putInt("FRIEND_FRAGMENT_DEPTH", depth)
+        arguments!!.putInt("FRIEND_FRAGMENT_DEPTH", depth)
     }
     get() {
         var fragment: Fragment? = null
-        val depth = arguments.getInt("FRIEND_FRAGMENT_DEPTH")
+        val depth = arguments!!.getInt("FRIEND_FRAGMENT_DEPTH")
         (depth downTo 0).forEach {
-            val fm = fragment?.childFragmentManager ?: activity.supportFragmentManager
+            val fm = fragment?.childFragmentManager ?: activity!!.supportFragmentManager
             fragment = fm.getFragment(arguments, "FRIEND_FRAGMENT$it")
         }
         return fragment!!

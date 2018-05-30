@@ -1,7 +1,11 @@
 package com.github.drunlin.webappbox.model
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.webkit.*
 import com.github.drunlin.webappbox.activity.WebappActivity
@@ -41,7 +45,13 @@ class WebappManager : ObservableModel() {
         shortcut.icon = webapp.icon
         shortcut.name = webapp.name
         onUpdate.invoke { it(index) }
-        if (addShortcut) installShortcut(shortcut)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            updateShortcut(shortcut)
+            if (addShortcut) installShortcutApi26(shortcut)
+        } else if (addShortcut) {
+            installShortcutLegacy(shortcut)
+        }
 
         runOnIoThread { databaseManager.update(webapp) }
     }
@@ -68,6 +78,25 @@ class WebappManager : ObservableModel() {
     }
 
     fun installShortcut(shortcut: Shortcut) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            installShortcutApi26(shortcut)
+        else
+            installShortcutLegacy(shortcut)
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    private fun installShortcutApi26(shortcut: Shortcut) {
+        val shortcutManager = context.getSystemService(ShortcutManager::class.java)
+        val s = ShortcutInfo.Builder(context, shortcut.uuid)
+                .setIcon(Icon.createWithBitmap(shortcut.icon))
+                .setShortLabel(shortcut.name)
+                .setIntent(WebappActivity.start(shortcut.uuid))
+                .build()
+        shortcutManager.requestPinShortcut(s, null)
+    }
+
+    @Suppress("DEPRECATION")
+    private fun installShortcutLegacy(shortcut: Shortcut) {
         val intent = Intent("com.android.launcher.action.INSTALL_SHORTCUT")
                 .putExtra(Intent.EXTRA_SHORTCUT_INTENT, WebappActivity.start(shortcut.uuid))
                 .putExtra(Intent.EXTRA_SHORTCUT_NAME, shortcut.name)
@@ -76,7 +105,32 @@ class WebappManager : ObservableModel() {
         context.sendBroadcast(intent)
     }
 
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    private fun updateShortcut(shortcut: Shortcut) {
+        val shortcutManager = context.getSystemService(ShortcutManager::class.java)
+        val s = ShortcutInfo.Builder(context, shortcut.uuid)
+                .setIcon(Icon.createWithBitmap(shortcut.icon))
+                .setShortLabel(shortcut.name)
+                .setIntent(WebappActivity.start(shortcut.uuid))
+                .build()
+        shortcutManager.updateShortcuts(mutableListOf(s))
+    }
+
     fun uninstallShortcut(shortcut: Shortcut) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            disableShortcut(shortcut)
+        else
+            uninstallShortcutLegacy(shortcut)
+    }
+
+    @TargetApi(Build.VERSION_CODES.N_MR1)
+    private fun disableShortcut(shortcut: Shortcut) {
+        val shortcutManager = context.getSystemService(ShortcutManager::class.java)
+        shortcutManager.disableShortcuts(mutableListOf(shortcut.uuid))
+    }
+
+    @Suppress("DEPRECATION")
+    private fun uninstallShortcutLegacy(shortcut: Shortcut) {
         val intent = Intent("com.android.launcher.action.UNINSTALL_SHORTCUT")
                 .putExtra(Intent.EXTRA_SHORTCUT_INTENT, WebappActivity.start(shortcut.uuid))
                 .putExtra(Intent.EXTRA_SHORTCUT_NAME, shortcut.name)

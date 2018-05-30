@@ -57,7 +57,7 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
         private set
 
     private val activity: FragmentActivity get() = getActivity() as FragmentActivity
-    private val manager: WebappFragment get() =  parentFragment as WebappFragment
+    private val manager: WebappFragment get() = parentFragment as WebappFragment
 
     private var pendingUrl: String? = null
 
@@ -111,11 +111,11 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        statusBarBackground?.setBackgroundColor(Color.WHITE)
+        statusBarBackground.setBackgroundColor(Color.WHITE)
 
         refreshLayout.setOnRefreshListener { webview.reload() }
 
-        webview.settings.setAppCachePath(File(context.cacheDir, "webapp").absolutePath)
+        webview.settings.setAppCachePath(File(context!!.cacheDir, "webapp").absolutePath)
         webview.settings.setAppCacheEnabled(true)
         webview.settings.databaseEnabled = true
         webview.settings.domStorageEnabled = true
@@ -157,7 +157,7 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
 
     override fun onDownloadStart(url: String?, userAgent: String?, contentDisposition: String?,
                                  mimetype: String?, contentLength: Long) {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             pendingDownloadInfo = DownloadInfo(url, contentDisposition, mimetype)
             requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
@@ -215,7 +215,7 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
 
     override fun onGlobalLayout() {
         if (activity.contentView.paddingBottom
-                > context.getDimension(TypedValue.COMPLEX_UNIT_DIP, 72f)) {
+                > context!!.getDimension(TypedValue.COMPLEX_UNIT_DIP, 72f)) {
             softKeyboardVisible = true
         } else if (softKeyboardVisible) {
             softKeyboardVisible = false
@@ -241,10 +241,14 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
             }
         }
 
-        activity.requestedOrientation = when (rule!!.orientation) {
+        val orientation = when (rule!!.orientation) {
             Orientation.NORMAL -> ActivityInfo.SCREEN_ORIENTATION_USER
             Orientation.PORTRAIT -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             Orientation.LANDSCAPE -> ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+        if (activity.requestedOrientation != orientation) {
+            activity.requestedOrientation = orientation
+            return
         }
 
         activity.window.decorView.systemUiVisibility = if (rule!!.fullScreen) {
@@ -313,7 +317,7 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
         val lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 || lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission_group.LOCATION)
+            if (ContextCompat.checkSelfPermission(context!!, Manifest.permission_group.LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 grantGeolocationPermissions()
             } else {
@@ -342,10 +346,10 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        webview?.saveState(outState)
+        webview.saveState(outState)
     }
 
     override fun onDestroyView() {

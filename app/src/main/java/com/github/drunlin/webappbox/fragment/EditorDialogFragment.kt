@@ -20,7 +20,7 @@ abstract class EditorDialogFragment<T>(id: Long?) : CustomViewDialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return AlertDialog.Builder(context)
+        return AlertDialog.Builder(context!!)
                 .setTitle(titleResId)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(id?.let { R.string.ok } ?: R.string.add) { d, i -> onCommit() }

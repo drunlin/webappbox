@@ -20,8 +20,8 @@ class UserAgentsFragment() : ListFragment<UserAgent, UserAgentManager>() {
     override val itemResId = R.layout.item_user_agent
 
     private var currentId: Long
-        set(value) { arguments.putLong(ARGUMENT_ID, value) }
-        get() = arguments.getLong(ARGUMENT_ID)
+        set(value) { arguments!!.putLong(ARGUMENT_ID, value) }
+        get() = arguments!!.getLong(ARGUMENT_ID)
 
     private val listener: OnChangeListener get() = friendFragment as OnChangeListener
 

@@ -33,7 +33,7 @@ abstract class EditorFragment<T>(id: Long?) : SecondaryFragment() {
 
         view.findFocus() ?: view.focusSearch(View.FOCUS_FORWARD)?.requestFocus()
 
-        binding = DataBindingUtil.bind<ViewDataBinding>(contentView)
+        binding = DataBindingUtil.bind(contentView)!!
         savedInstanceState ?: data?.run { onBindData(binding, this) }
         binding.executePendingBindings()
     }

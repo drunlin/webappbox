@@ -46,10 +46,10 @@ class RuleEditorFragment(id: Long?) : EditorFragment<Rule>(id),
         userAgent = if (ua in userAgents) ua else null
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        userAgent?.run { outState?.putLong(BUNDLE_UA, id) }
+        userAgent?.run { outState.putLong(BUNDLE_UA, id) }
     }
 
     override fun onBindData(binding: ViewDataBinding, data: Rule) {
@@ -74,7 +74,7 @@ class RuleEditorFragment(id: Long?) : EditorFragment<Rule>(id),
     }
 
     private fun updateUserAgentSummary() {
-        (binding as FragmentRuleEditorBinding).userAgentItem.summary = userAgent?.name
+        (binding as FragmentRuleEditorBinding).userAgentItem!!.summary = userAgent?.name
     }
 
     override fun onConfigureView(data: Rule) {
