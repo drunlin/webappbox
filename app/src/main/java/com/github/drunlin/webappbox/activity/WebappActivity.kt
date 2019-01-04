@@ -32,6 +32,7 @@ open class WebappActivity : FragmentActivity(), WebappContext {
     private val id by lazy { webappManager.getWebappId(intent.uuid) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        app.component.inject(this)
         super.onCreate(savedInstanceState)
 
         if (intent.flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS != 0)
@@ -41,8 +42,6 @@ open class WebappActivity : FragmentActivity(), WebappContext {
     }
 
     private fun create(savedInstanceState: Bundle?) {
-        app.component.inject(this)
-
         if (id != null) {
             savedInstanceState ?: setContentFragment(WebappFragment())
         } else {
