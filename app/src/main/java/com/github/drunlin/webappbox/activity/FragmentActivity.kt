@@ -58,7 +58,7 @@ open class FragmentActivity : TranslucentStatusActivity() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.content)
         supportFragmentManager.beginTransaction()
                 .setCustomAnimations(0, openExitAnimation, closeEnterAnimation, 0)
-                .hide(currentFragment)
+                .hide(currentFragment!!)
                 .setCustomAnimations(openEnterAnimation, 0, 0, closeExitAnimation)
                 .add(R.id.content, fragment)
                 .addToBackStack(null)

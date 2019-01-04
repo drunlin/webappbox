@@ -81,6 +81,6 @@ class RulesFragment : ListFragment<Rule, RuleManager>() {
 
         override fun isLongPressDragEnabled() = false
 
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int) = Unit
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) = Unit
     }
 }

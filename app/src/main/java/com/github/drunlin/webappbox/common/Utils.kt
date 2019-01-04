@@ -116,7 +116,7 @@ var Fragment.friendFragment: Fragment
         var depth = 0
         var fragment: Fragment? = value
         do {
-            fragment!!.fragmentManager!!.putFragment(arguments, "FRIEND_FRAGMENT${depth++}", fragment)
+            fragment!!.fragmentManager!!.putFragment(arguments!!, "FRIEND_FRAGMENT${depth++}", fragment)
             fragment = fragment.parentFragment
         } while (fragment != null)
 
@@ -127,7 +127,7 @@ var Fragment.friendFragment: Fragment
         val depth = arguments!!.getInt("FRIEND_FRAGMENT_DEPTH")
         (depth downTo 0).forEach {
             val fm = fragment?.childFragmentManager ?: activity!!.supportFragmentManager
-            fragment = fm.getFragment(arguments, "FRIEND_FRAGMENT$it")
+            fragment = fm.getFragment(arguments!!, "FRIEND_FRAGMENT$it")
         }
         return fragment!!
     }

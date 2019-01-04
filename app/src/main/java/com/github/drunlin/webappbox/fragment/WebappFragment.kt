@@ -45,7 +45,7 @@ class WebappFragment : Fragment() {
 
         repeat(savedInstanceState?.getInt(BUNDLE_COUNT) ?: 0) {
             fragments.add(childFragmentManager
-                    .getFragment(savedInstanceState, key(it)) as WebappWindowFragment)
+                    .getFragment(savedInstanceState!!, key(it)) as WebappWindowFragment)
         }
     }
 
