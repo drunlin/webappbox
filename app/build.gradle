@@ -37,6 +37,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -68,8 +74,10 @@ dependencies {
 
     implementation "org.jsoup:jsoup:1.9.2"
 
-    testImplementation "junit:junit:4.12"
-    testImplementation "org.robolectric:robolectric:3.0"
+    testImplementation "androidx.test:runner:1.1.1"
+    testImplementation "androidx.test.ext:junit:1.1.0"
+    testImplementation "androidx.test.ext:truth:1.1.0"
+    testImplementation "org.robolectric:robolectric:4.0"
 
     androidTestImplementation "com.android.support:support-annotations:28.0.0"
     androidTestImplementation "com.android.support.test:runner:1.0.2"

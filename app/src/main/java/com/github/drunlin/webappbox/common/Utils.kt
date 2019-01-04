@@ -16,7 +16,6 @@ import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AlertDialog
-import android.util.Patterns
 import android.util.TypedValue
 import android.webkit.URLUtil
 import android.widget.Button
@@ -96,7 +95,7 @@ fun Activity.safeStartActivity(intent: Intent) {
     }
 }
 
-fun <T : Fragment> FragmentManager.add(@IdRes viewId: Int, fragment: T) : T {
+fun <T : Fragment> FragmentManager.add(@IdRes viewId: Int, fragment: T): T {
     beginTransaction().add(viewId, fragment).commit()
     return fragment
 }
@@ -140,10 +139,10 @@ fun DialogFragment.show(manager: FragmentManager) {
     show(manager, null)
 }
 
-val AlertDialog.positiveButton : Button get() = getButton(AlertDialog.BUTTON_POSITIVE)
+val AlertDialog.positiveButton: Button get() = getButton(AlertDialog.BUTTON_POSITIVE)
 
 val ImageView.bitmap: Bitmap get() = (drawable as BitmapDrawable).bitmap
 
 val TextView.string: String get() = text.toString()
 
-fun String.isValidUrl() = URLUtil.isValidUrl(this) && Patterns.WEB_URL.matcher(this).matches()
+fun String.isValidUrl() = URLUtil.isValidUrl(this)

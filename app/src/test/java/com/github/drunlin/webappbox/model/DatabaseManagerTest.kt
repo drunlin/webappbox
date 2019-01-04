@@ -1,19 +1,15 @@
 package com.github.drunlin.webappbox.model
 
-import android.os.Build
-import com.github.drunlin.webappbox.BuildConfig
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.After
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricGradleTestRunner
 import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
 
-@Config(constants = BuildConfig::class, sdk = intArrayOf(Build.VERSION_CODES.LOLLIPOP))
-@RunWith(RobolectricGradleTestRunner::class)
+@RunWith(AndroidJUnit4::class)
 class DatabaseManagerTest {
     lateinit var databaseManager: DatabaseManager
 
