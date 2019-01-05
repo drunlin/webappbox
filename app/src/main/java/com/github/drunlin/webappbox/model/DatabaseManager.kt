@@ -20,7 +20,7 @@ class DatabaseManager(private val context: Context) :
 
     companion object {
         val DB_NAME = "app.db"
-        val DB_VERSION = 1
+        val DB_VERSION = 2
 
         val TABLE_APP = "app"
         val TABLE_RULE = "rule"
@@ -44,6 +44,7 @@ class DatabaseManager(private val context: Context) :
         val FULL_SCREEN = "full_screen"
         val LAUNCH_MODE = "launch_mode"
         val LOCATION = "location"
+        val TEXT_ZOOM = "text_zoom"
     }
 
     @Inject lateinit var userAgentManager: Lazy<UserAgentManager>
@@ -76,6 +77,7 @@ class DatabaseManager(private val context: Context) :
             $PATTERN text not null,
             $REGEX integer not null,
             $COLOR integer not null,
+            $TEXT_ZOOM integer not null,
             $LAUNCH_MODE text not null,
             $ORIENTATION text not null,
             $FULL_SCREEN integer not null,
@@ -89,7 +91,9 @@ class DatabaseManager(private val context: Context) :
         sql.split(";\n").filter(String::isNotBlank).map { "$it;" }.forEach { db.execSQL(it) }
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) = Unit
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("ALTER TABLE $TABLE_RULE ADD COLUMN $TEXT_ZOOM integer default 100;")
+    }
 
     private fun query(table: String, columns: Array<String>, selection: String?,
               selectionArgs: Array<String>?): Cursor {
@@ -204,6 +208,7 @@ class DatabaseManager(private val context: Context) :
         values.put(PATTERN, pattern.pattern)
         values.put(REGEX, pattern.regex)
         values.put(COLOR, color)
+        values.put(TEXT_ZOOM, textZoom)
         values.put(LAUNCH_MODE, launchMode.name)
         values.put(ORIENTATION, orientation.name)
         values.put(FULL_SCREEN, fullScreen)
@@ -228,15 +233,15 @@ class DatabaseManager(private val context: Context) :
 
     fun getRules(id: Long): MutableList<Rule> {
         val list = LinkedList<Rule>()
-        val columns = arrayOf(ID, PATTERN, REGEX, COLOR, LAUNCH_MODE, ORIENTATION, FULL_SCREEN,
+        val columns = arrayOf(ID, PATTERN, REGEX, COLOR, TEXT_ZOOM, LAUNCH_MODE, ORIENTATION, FULL_SCREEN,
                 USER_AGENT, JS_ENABLE)
         val cursor = query(TABLE_RULE, columns, "$APP_ID=$id", ORDER)
         if (cursor.moveToFirst())
             do
                 list.add(Rule(cursor.getLong(0), URLPattern(cursor.getString(1), cursor.getBoolean(2)),
-                        cursor.getInt(3), LaunchMode.valueOf(cursor.getString(4)),
-                        Orientation.valueOf(cursor.getString(5)), cursor.getBoolean(6),
-                        userAgentManager.get().getUserAgent(cursor.getLong(7)), cursor.getBoolean(8)))
+                        cursor.getInt(3), cursor.getInt(4), LaunchMode.valueOf(cursor.getString(5)),
+                        Orientation.valueOf(cursor.getString(6)), cursor.getBoolean(7),
+                        userAgentManager.get().getUserAgent(cursor.getLong(8)), cursor.getBoolean(9)))
             while (cursor.moveToNext())
         cursor.close()
         return list

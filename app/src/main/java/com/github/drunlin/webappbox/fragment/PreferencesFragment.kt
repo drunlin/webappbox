@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
+import android.support.v7.preference.SeekBarPreference
 import android.view.View
 import com.github.drunlin.webappbox.R
 import com.github.drunlin.webappbox.activity.FragmentActivity
@@ -35,10 +36,21 @@ class PreferencesFragment : PreferenceFragmentCompat(), UserAgentsFragment.OnCha
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupTextZoomPreference()
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
             findPreference(PREF_COLOR).isVisible = false
 
         updateUserAgentSummary()
+    }
+
+    private fun setupTextZoomPreference() {
+        val preference = findPreference(PREF_TEXT_ZOOM) as SeekBarPreference
+        preference.summary = getString(R.string.text_zoom_summary, preference.value)
+        preference.setOnPreferenceChangeListener { _, value ->
+            preference.summary = getString(R.string.text_zoom_summary, value as Int)
+            true
+        }
     }
 
     private fun updateUserAgentSummary() {

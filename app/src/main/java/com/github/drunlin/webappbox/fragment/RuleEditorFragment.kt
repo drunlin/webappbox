@@ -4,6 +4,7 @@ import android.databinding.ViewDataBinding
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.SeekBar
 import com.github.drunlin.webappbox.BR
 import com.github.drunlin.webappbox.R
 import com.github.drunlin.webappbox.common.BUNDLE_UA
@@ -62,6 +63,16 @@ class RuleEditorFragment(id: Long?) : EditorFragment<Rule>(id),
         editor.onStateChange = { confirmMenu?.isEnabled = it }
         editor.isExisted = { v, b -> ruleManager.isExited(v, b) }
 
+        textZoomSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) = Unit
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                textZoomText.text = getString(R.string.text_zoom_summary, seekBar.progress)
+            }
+        })
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
             colorItem.setOnClickListener { showDialog(ColorPickerFragment(colorView.color)) }
         else
@@ -74,7 +85,7 @@ class RuleEditorFragment(id: Long?) : EditorFragment<Rule>(id),
     }
 
     private fun updateUserAgentSummary() {
-        (binding as FragmentRuleEditorBinding).userAgentItem!!.summary = userAgent?.name
+        (binding as FragmentRuleEditorBinding).userAgentItem.summary = userAgent?.name
     }
 
     override fun onConfigureView(data: Rule) {
@@ -97,13 +108,14 @@ class RuleEditorFragment(id: Long?) : EditorFragment<Rule>(id),
         val pattern = editor.value
         val regex = editor.regex
         val color = colorView.color
+        val tz = textZoomSeekBar.progress
         val lm = LaunchMode.valueOf(launchModeSpinner.value)
         val so = Orientation.valueOf(orientationSpinner.value)
         val ua = userAgent ?: data?.userAgent ?: userAgents.getOrNull(0)
         val fs = fullScreenItem.switcher.isChecked
         val js = enableJavascriptItem.switcher.isChecked
 
-        id?.run { ruleManager.update(this, pattern, regex, color, lm, so, fs, ua, js) }
-                ?: ruleManager.insert(pattern, regex, color, lm, so, fs, ua, js)
+        id?.run { ruleManager.update(this, pattern, regex, color, tz, lm, so, fs, ua, js) }
+                ?: ruleManager.insert(pattern, regex, color, tz, lm, so, fs, ua, js)
     }
 }

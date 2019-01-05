@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--suppress AndroidElementNotAllowed -->
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         android:title="@string/default_rule">
         <com.thebluealliance.spectrum.SpectrumPreferenceCompat
             android:key="status_bar_color"
             android:title="@string/status_bar_color"
             android:defaultValue="@android:color/black"/>
+        <android.support.v7.preference.SeekBarPreference
+            android:key="text_zoom"
+            android:title="@string/text_zoom"
+            tools:summary="100%"
+            app:showSeekBarValue="false"
+            android:max="200"
+            android:defaultValue="100"/>
         <ListPreference
             android:key="launch_mode"
             android:title="@string/launch_mode"

@@ -33,6 +33,7 @@ class PreferenceModel : Injectable, SharedPreferences.OnSharedPreferenceChangeLi
                 val orientation = Orientation.valueOf(
                         preferences.getString(PREF_ORIENTATION, Orientation.NORMAL.name))
                 _defaultRule = Rule(-1, URLPattern(), preferences.getInt(PREF_COLOR, Color.BLACK),
+                        preferences.getInt(PREF_TEXT_ZOOM, 100),
                         launchMode, orientation, preferences.getBoolean(PREF_FULL_SCREEN, false),
                         userAgent, preferences.getBoolean(PREF_ENABLE_JS, true))
             }

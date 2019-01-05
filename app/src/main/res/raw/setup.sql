@@ -5,6 +5,6 @@ INSERT INTO "user_agent" VALUES(1,'Android Phone','Mozilla/5.0 (Linux; Android 7
 INSERT INTO "user_agent" VALUES(2,'Android Tablet','Mozilla/5.0 (Linux; Android 7.0; Nexus 9 Build/NPD90G; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/51.0.2704.90 Safari/537.36 Sleipnir/3.5.4');
 INSERT INTO "user_agent" VALUES(3,'iPhone','Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A5341a Safari/602.1');
 INSERT INTO "user_agent" VALUES(4,'iPad','Mozilla/5.0 (iPad; CPU OS 10_0 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/53.0.2785.86 Mobile/14A5335b Safari/601.1.46');
-INSERT INTO "rule" VALUES(1,1,'.+',1,-16777216,'SINGLE_TOP','LANDSCAPE',1,0,1,1);
-INSERT INTO "rule" VALUES(2,2,'https://(www\.)?regex101\.com/.*',1,-12627531,'CLEAR_TOP','NORMAL',0,0,1,2);
-INSERT INTO "rule" VALUES(3,2,'.+',1,-16777216,'STANDARD','NORMAL',0,0,1,2);
+INSERT INTO "rule" VALUES(1,1,'.+',1,-16777216,100,'SINGLE_TOP','LANDSCAPE',1,0,1,1);
+INSERT INTO "rule" VALUES(2,2,'https://(www\.)?regex101\.com/.*',1,-12627531,100,'CLEAR_TOP','NORMAL',0,0,1,2);
+INSERT INTO "rule" VALUES(3,2,'.+',1,-16777216,100,'STANDARD','NORMAL',0,0,1,2);

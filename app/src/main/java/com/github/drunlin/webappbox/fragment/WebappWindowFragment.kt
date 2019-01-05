@@ -395,6 +395,7 @@ class WebappWindowFragment() : Fragment(), DownloadListener, OnKeyListener, OnGl
 
             updateSystemUi(url)
 
+            view.settings.textZoom = rule!!.textZoom
             view.settings.userAgentString = rule!!.userAgent.value
             view.settings.javaScriptEnabled = rule!!.jsEnabled
 

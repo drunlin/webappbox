@@ -27,12 +27,13 @@ open class RuleManager : DataManager<Rule>() {
         onMove.invoke { it(from, to) }
     }
 
-    fun update(id: Long, pattern: String, regex: Boolean, color: Int, launchMode: LaunchMode,
+    fun update(id: Long, pattern: String, regex: Boolean, color: Int, textZoom: Int, launchMode: LaunchMode,
                orientation: Orientation, fullScreen: Boolean, userAgent: UserAgent?, enableJS: Boolean) {
         val (index, rule) = rules.findIndexedValue { it.id == id }
         rule.pattern.pattern = pattern
         rule.pattern.regex = regex
         rule.color = color
+        rule.textZoom = textZoom
         rule.launchMode = launchMode
         rule.orientation = orientation
         rule.fullScreen = fullScreen
@@ -41,10 +42,10 @@ open class RuleManager : DataManager<Rule>() {
         update(index, rule)
     }
 
-    fun insert(pattern: String, regex: Boolean, color: Int, launchMode: LaunchMode,
+    fun insert(pattern: String, regex: Boolean, color: Int, textZoom: Int, launchMode: LaunchMode,
                orientation: Orientation, fullScreen: Boolean,
                userAgent: UserAgent?, enableJS: Boolean) {
-        val rule = Rule(generateId(), URLPattern(pattern, regex), color, launchMode, orientation,
+        val rule = Rule(generateId(), URLPattern(pattern, regex), color, textZoom, launchMode, orientation,
                 fullScreen, userAgent ?: userAgentManager.defaultUserAgent, enableJS)
         insert(rule)
     }

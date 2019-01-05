@@ -102,4 +102,5 @@
         <item>全局唯一</item>
     </string-array>
     <string name="app_name">网络应用盒子</string>
+    <string name="text_zoom">文字大小</string>
 </resources>

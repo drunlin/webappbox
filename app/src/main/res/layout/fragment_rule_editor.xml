@@ -36,6 +36,35 @@
                 android:layout_gravity="right|center_vertical"
                 app:color="@{rule != null ? rule.color : @android:color/black}"/>
         </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            style="@style/ListPreferredItem">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_zoom"
+                style="@style/ListItemTitle"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/textZoomText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/text_zoom_summary(rule != null ? rule.textZoom : 100)}"
+                    tools:text="100%"
+                    style="@style/ListItemSummary"/>
+                <SeekBar
+                    android:id="@+id/textZoomSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="200"
+                    android:progress="@{rule != null ? rule.textZoom : 100}"/>
+            </LinearLayout>
+        </LinearLayout>
         <com.github.drunlin.webappbox.widget.AppSpinner
             android:id="@+id/launchModeSpinner"
             android:layout_width="match_parent"
