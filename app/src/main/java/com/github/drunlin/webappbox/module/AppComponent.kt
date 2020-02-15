@@ -3,10 +3,7 @@ package com.github.drunlin.webappbox.module
 import com.github.drunlin.webappbox.activity.LauncherActivity
 import com.github.drunlin.webappbox.activity.MainActivity
 import com.github.drunlin.webappbox.activity.WebappActivity
-import com.github.drunlin.webappbox.fragment.IconLoaderFragment
-import com.github.drunlin.webappbox.fragment.PreferencesFragment
-import com.github.drunlin.webappbox.fragment.UserAgentEditorFragment
-import com.github.drunlin.webappbox.fragment.UserAgentsFragment
+import com.github.drunlin.webappbox.fragment.*
 import com.github.drunlin.webappbox.model.*
 import dagger.Component
 import javax.inject.Singleton
@@ -26,6 +23,7 @@ interface AppComponent {
     fun inject(fragment: UserAgentsFragment)
     fun inject(model: IconLoader): IconLoader
     fun inject(fragment: IconLoaderFragment)
+    fun inject(fragment: AppsFragment)
 
     fun webappComponent(module: WebappModule): WebappComponent
 }
