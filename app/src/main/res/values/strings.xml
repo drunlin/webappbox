@@ -78,7 +78,7 @@
     <string name="ok">OK</string>
     <string name="add">Add</string>
     <string name="version">Version</string>
-    <string name="version_code" translatable="false">1.3</string>
+    <string name="version_code" translatable="false">1.5</string>
     <string name="github" translatable="false">Github</string>
     <string name="project_homepage" translatable="false">https://github.com/drunlin/webappbox</string>
     <string name="developer">Developer</string>
